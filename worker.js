@@ -11,13 +11,20 @@ function checkPrime(number) {
     }
 }
 
+
+
+
 self.onmessage = (e) => {
 
-    for (i = parseInt(e.data.number) + 1; i < 2500000; i++) {
-        if (checkPrime(i)) {
-            postMessage({ 'number': i, "isPrime": true });
-        }
-        else postMessage({ 'number': i, "isPrime": false });
-
+    console.log(e.data);
+    if (checkPrime(e.data.number)) {
+        console.log(e.data.number);
+        postMessage({ 'number': e.data.number, "isPrime": true });
     }
+    else postMessage({ 'number': e.data.number, "isPrime": false });
 }
+
+
+
+
+

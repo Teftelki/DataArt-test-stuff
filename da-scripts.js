@@ -12,7 +12,9 @@ const totalNumbersOperated = document.getElementById('total-Numbers');
 totalNumbersOperated.textContent = localStorage.getItem("totalNumbersOperated") || 0;
 
 let testWorker;
-let request = window.indexedDB.open('numbers', 1);
+
+
+let request = indexedDB.open('numbers', 1);
 let db, store;
 
 request.onerror = (eve) => console.log('error' + e.target.errorCode);
@@ -28,19 +30,22 @@ request.onupgradeneeded = (eve) => {
     console.log('upgrade');
 }
 
+
 startSearch = () => {
     testWorker = new Worker('worker.js');
+    while (testWorker!=undefined || testWorker!=null) {
     runCounters.textContent++;
     localStorage.setItem("runCounters", runCounters.textContent);
 
 
+    status.textContent = 'Search Started'
+    searchPrimeButton.innerHTML = 'Stop search';
+
+    console.log('Search Started')
+
     testWorker.onmessage = (e) => {
         if (e.data.isPrime == true) {
-            console.log(e.data.number)
-            console.log(e.data.isPrime)
-
-            status.textContent = 'Search Started'
-            searchPrimeButton.innerHTML = 'Stop search';
+            console.log(e.data.number, e.data.isPrime);
 
 
             counter.textContent = parseInt(counter.textContent) + 1;
@@ -59,16 +64,24 @@ startSearch = () => {
         }
     }
 
-    if (!(localStorage.getItem('lastNumberFound'))) {
-        let lastNumberFound = 1;
-        testWorker.postMessage({ 'number': lastNumberFound });
+    if (!(localStorage.getItem('totalNumbersOperated'))) {
+        testWorker.postMessage({ 'number': 0 });
     } else {
-        testWorker.postMessage({ 'number': localStorage.getItem('lastNumberFound') });
+        testWorker.postMessage({ 'number': localStorage.getItem('totalNumbersOperated') });
     }
+
+
+
     searchPrimeButton.removeEventListener('click', startSearch);
     searchPrimeButton.addEventListener('click', stopSearch);
-
 }
+}
+
+
+
+
+
+
 
 stopSearch = () => {
     if (testWorker != undefined) {

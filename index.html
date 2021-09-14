@@ -3,26 +3,45 @@
 
 <head>
     <meta charset="utf-8" />
+    <link href='styles.css' rel="stylesheet">
 </head>
 
 <body>
+<div class="container">
+    <section class="counters">
+        <p>Application ran times:<span id='run-Counters'></span></p>
+        <p>Prime numbers found:<span id='counter'> 0</span></p>
+        <p>Total numbers enumerated:<span id='total-Numbers'>0</span></p>
+        <p><span id='status'>Search Not Started</span> </p>
+        <button id ='search-prime'>Start search</button>
+    </section>
 
+    <section id="total-timer" class="total-timer">
+            total Operating time
+            H.:<span id="total-hours">00:</span>
+            Min.:<span id="total-mins">00:</span>
+            Sec.:<span id="total-seconds">00</span>  
+            <p>Max: <span id='maxTicks'></span> </p>
+            <p>Min: <span id ='minTicks'></span> </p>
+    </section>
 
-    <p>Application ran times:<span id='run-Counters'></span></p>
-    <p>Prime numbers found:<span id='counter'> 0</span></p>
-    <p>Total numbers enumerated:<span id='total-Numbers'>0</span></p>
-    <p><span id='status'>Search Not Started</span> </p>
-    <button id ='search-prime'>Start search</button>
+    <section class="pagination">
+        <button id="show-numbers-button">Show all found numbers</button>
+        <div id ="pagination-block" class = 'pagination-block'></div>
+        <div id = "numbers-block"></div>
+        <button id='pagination-previous-button' class="hidden">PREVIOUS</button> 
+        <button id='pagination-next-button' class="hidden">NEXT</button> 
+    </section>
 
-    <div id="total-timer">
-        total Operating time
-        H.:<span id="total-hours">00:</span>
-        Min.:<span id="total-mins">00:</span>
-        Sec.:<span id="total-seconds">00</span>  
-      </div>
-      
+    <section class="canvas-stuff">
+        <button id='draw-canvas-button'>Draw canvas</button>
+        <canvas id = "canvas" class="canvas"> </canvas>
+    </section>
 
+</div>
     <script src="da-scripts.js"> </script>
+
+    
 </body>
 
 </html>

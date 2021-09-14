@@ -1,0 +1,54 @@
+.total-timer {
+    margin-top: 20px;
+    width: 50%;
+}
+
+.counters {
+    width: 50%;
+}
+
+.container {
+    display: flex;
+    flex-shrink: 0;
+    margin: auto;
+    max-width: 940px;
+    flex-wrap: wrap
+}
+
+.pagination { 
+    width: 100%;
+    margin-top: 50px;
+}
+
+.canvas {
+    margin-top: 20px;
+    border: 1px solid black;
+}
+
+.pagination-link {margin-left: 5px;}
+
+
+.canvas-stuff {
+    margin-top: 50px;
+    max-width: 1000px;
+    max-height: 1000px;
+    overflow: scroll;
+}
+
+.pagination-block {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.active {
+    color:red;
+}
+
+
+.hidden {
+    display:none;
+}
+
+.visible {
+    display: block;
+}
